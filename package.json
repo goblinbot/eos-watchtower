@@ -1,0 +1,31 @@
+{
+  "name": "eos-watchtower",
+  "version": "1.0.0",
+  "description": "Eos API dev",
+  "main": "app.js",
+  "scripts": {
+    "test": "commscheck"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goblinbot/eos-watchtower.git"
+  },
+  "keywords": [
+    "Node",
+    "nodeJS",
+    "express",
+    "API",
+    "websockets",
+    "socket.io"
+  ],
+  "author": "Thijs Boerma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goblinbot/eos-watchtower/issues"
+  },
+  "homepage": "https://github.com/goblinbot/eos-watchtower#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  }
+}
