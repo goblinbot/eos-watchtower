@@ -4,7 +4,8 @@
   "description": "Eos API dev",
   "main": "app.js",
   "scripts": {
-    "test": "commscheck"
+    "test": "commscheck",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
