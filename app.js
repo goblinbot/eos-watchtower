@@ -18,7 +18,7 @@ app.get('/', function (req, res) {
 });
 
 // Zet server aan bij 'node app','node app.js', 'nodemon app'..
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 const server = app.listen(port, function () {
     console.log(`Listen OK: port ${port}`);
 });
