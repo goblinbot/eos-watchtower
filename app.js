@@ -1,24 +1,46 @@
-// Het is kwart voor Express, pak express en de service(s).
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-// const storeService = require('/server/services/storeService'); // niet meer gebruiken voor nu.
+// Time to use Express, and related dependancies! 
+const express       = require('express');
+const bodyParser    = require('body-parser');
+const cors          = require('cors');
 
-// Het is Express-'o-clock.
+// Configure Express.
 const app = express();
-
-// express configuratie
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// default bericht bij aanroepen API
-app.get('/', function (req, res) {
-    res.send('Welcome to the petSupplies API');
+// Configure socket.io / The Websocket.
+const http  = require('http').Server(app);
+const io    = require('socket.io')(http);
+
+// Grab the remaining dependancies.
+const ip = require('ip');
+const fs = require('fs');
+const globalSettings = require('./_config/config.js');
+
+// Run the server! using PORT 5000 by default. Command in terminal: 'node app' 
+const port = process.env.PORT || 5000;
+
+// Event: WATCHTOWER START
+http.listen(port, function () {
+
+    /* flavor text */
+    console.log('\n  |>');
+    console.log(' _| ');
+    console.log('[==]')
+    console.log(' || ');
+    console.log(' || { WATCHTOWER }');
+    console.log(' ||');
+    console.log('/VV\\_____________\n');
+    console.log('# Initialising ..');
+    console.log('# Loading dependancies ..');
+    console.log('-------------------------');
+
 });
 
-// Zet server aan bij 'node app','node app.js', 'nodemon app'..
-const port = process.env.PORT || 8080;
-const server = app.listen(port, function () {
-    console.log(`Listen OK: port ${port}`);
+
+
+// default message when visiting.
+app.get('/', function (req, res) {
+    res.send('Welcome to the WatchTower API');
 });
