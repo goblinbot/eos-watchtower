@@ -31,13 +31,14 @@ const port = process.env.PORT || globalConfig.sys.port;
 http.listen(port, function () {
 
     /* flavor text */
-    console.log('\n  |>');
-    console.log(' _| ');
-    console.log('[==]')
-    console.log(' || ');
-    console.log(` || { ${globalConfig.sys.name.toUpperCase()} }`);
-    console.log(' ||');
-    console.log('/VV\\_____________\n');
+    console.log('  .');
+    console.log('  |>');
+    console.log(' _|');
+    console.log('(==)')
+    console.log(' ## ');
+    console.log(` ##   { ${globalConfig.sys.name.toUpperCase()} }`);
+    console.log(' ##');
+    console.log('/##\\_____________________\n');
     console.log('# Initialising ..');
     console.log('# Loading dependancies ..');
     console.log('-------------------------');
@@ -52,5 +53,5 @@ http.listen(port, function () {
 
 // default message when visiting.
 app.get('/', function (req, res) {
-    res.send('Welcome to the WatchTower API');
+    res.send(`Welcome to the ${globalConfig.sys.name} API`);
 });

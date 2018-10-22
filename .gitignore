@@ -1,1 +1,5 @@
+# dependancies
 /node_modules
+
+# custom
+/_config/config.js
