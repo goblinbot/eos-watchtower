@@ -5,6 +5,7 @@
         "allowJs": true,
         "target": "es6",
         "module": "commonjs",
+        "resolveJsonModule": true,
         "outDir": "dist",
         "inlineSourceMap": true,
         "allowSyntheticDefaultImports": true,

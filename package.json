@@ -29,6 +29,7 @@
   "homepage": "https://github.com/goblinbot/eos-watchtower#readme",
   "dependencies": {
     "@types/node": "^10.12.3",
+    "@types/socket.io": "^2.1.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
@@ -36,7 +37,9 @@
     "nodemon": "^1.18.4",
     "nodemon-webpack-plugin": "^3.0.1",
     "socket.io": "^2.1.1",
+    "source-map-support": "^0.5.9",
     "ts-loader": "^5.3.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.1.6",
     "webpack": "^4.25.1"
   },

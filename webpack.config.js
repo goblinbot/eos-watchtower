@@ -1,15 +1,22 @@
+const path = require('path');
 const fs = require('fs');
 const NodemonPlugin = require('nodemon-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     mode: "development",
     entry: "./src/index.ts",
+    node: {
+        _dirname: true
+    },
     output: {
-        filename: "index.js"
+        filename: "index.js",
+        path: path.resolve(__dirname, 'dist')
     },
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.
-        extensions: [".ts", ".tsx", ".js"]
+        extensions: [".ts", ".tsx", ".js"],
+        plugins: [new TsconfigPathsPlugin()]
     },
     externals: getNodeModules(),
     module: {
