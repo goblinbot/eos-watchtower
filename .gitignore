@@ -1,5 +1,12 @@
 # dependancies
-/node_modules
+dist/
+node_modules/
+/.idea/
+package-lock.json
+/reports/
+*.iml
+.DS_Store
+*/.DS_Store
 
 # custom
-/_config/config.js
+/_config/config.json

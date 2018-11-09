@@ -10,7 +10,11 @@ const defaultStatus = {
         status: 'Online',
         colorscheme: 'default',
         power: 100,
-        under_attack: false,   
+    },
+    attack: {
+        under_attack: false,
+        forces: 'none',
+        location: 'none',
     },
     broadcast: {
         priority: 1,

@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowJs": true,
+        "target": "es6",
+        "module": "commonjs",
+        "outDir": "dist",
+        "inlineSourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "paths": {
+            "@environment": [
+                "environment/index"
+            ],
+            "@modules/*": [
+                "modules/*"
+            ]
+        },
+        "typeRoots": [
+            "./node_modules/@types"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.js",
+        "src/**/*.json"
+    ],
+    "exclude": [
+        "node_modules",
+        "./src/**/*.spec.ts"
+    ]
+}
