@@ -20,7 +20,7 @@ export class WeatherRoutes {
             json: true
         };
 
-        // get current
+        /** @description get the current Weather. Set the Weather if it's not available yet. */
         router.route('/').get((req, res) => {
             // check if a WEATHER REPORT is already set. If not, request LiveWeer data.
             if(!WeatherController.currentWeather) {
@@ -35,6 +35,13 @@ export class WeatherRoutes {
                 // return the already cached weather.
                 res.status(200).send(WeatherController.currentWeather);
             }
+        });
+
+        /** @description update route: Force the weather to update. */
+        router.route('/update').get((req, res) => {
+            console.log('[WT] Manual weather update called.');
+            WeatherController.getLiveWeatherData();
+            res.status(200).send({ message: 'Manual weather update called. '});
         });
 
         console.log('[RO] ..Weather Routes added.');

@@ -3,6 +3,9 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as SocketIO from 'socket.io';
 import { Routes } from './routes';
+import * as Config from '../_config/config.json';
+
+import { WeatherController } from './modules/weather/weather.controller';
 
 export class App {
 
@@ -23,10 +26,17 @@ export class App {
         App.websockets = server;
     }
 
+    private initWeatherModule() {
+        if (Config.weather.enabled) {
+            WeatherController.init();
+        }
+    }
+
     constructor() {
         App.app = express();
         this.config();
         this.loadRoutes();
+        this.initWeatherModule();
     }
 
     private config(): void {
