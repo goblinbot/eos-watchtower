@@ -1,15 +1,15 @@
-import { WeatherData } from './models/weather';
+import { WeatherData } from '../../bin/models/weather';
 import * as Config from '../../../_config/config.json';
 import * as request from "request";
 
 export class WeatherController {
 
-    // public static currentWeather: WeatherData;
-    public static currentWeather: any;
+    public static currentWeather: WeatherData;
 
     public static convertToWeatherData(inputJson: any): WeatherData {
         const weather = new WeatherData();
-            weather.lastupdated = new Date();
+            weather.lastupdated = new Date;
+            weather.updatetimestamp = Date.now();
             weather.temperature = inputJson.temp;
             weather.windkmh = inputJson.windKmh;
             weather.winddirection = inputJson.windr;

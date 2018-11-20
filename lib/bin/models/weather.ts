@@ -1,5 +1,6 @@
 export class WeatherData {
     lastupdated: Date;
+    updatetimestamp: number;
     temperature: number;
     windkmh: number;
     winddirection: string;
@@ -11,4 +12,6 @@ export class WeatherData {
     tempmintomorrow: number;
     tempmaxtomorrow: number;
     chanceofraintomorrow: number;
+
+    constructor() {}
 }

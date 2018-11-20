@@ -1,4 +1,5 @@
 import * as SecData from '../../bin/data/security.json';
+import { securityModel } from '../../bin/models/securitylevels';
 import * as Config from '../../../_config/config.json';
 // TODO import config for default
 
@@ -10,7 +11,7 @@ export class SecurityController {
 
     /**
      * @returns the {secLevel} with a TIMESTAMP attached.
-     * @param secLevel
+     * @param {secLevel}
      */
     private static addTimestamp(secLevel): JSON {
         let outputJSON = JSON.parse(JSON.stringify(secLevel));
