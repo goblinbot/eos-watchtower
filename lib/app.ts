@@ -10,6 +10,7 @@ export class App {
     public static app: Express = express();
     private static websockets: SocketIO.Server;
 
+
     public get application(): Express {
         return App.app;
     }

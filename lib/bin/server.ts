@@ -12,24 +12,24 @@ export class Server {
     private static application: Express;
     private static websockets: SocketIO.Server;
 
-
-
     public create(app: App): void {
         Server.application = app.application;
-        Server.application.set('port', Config.port);
+        Server.application.set('port', PORT);
 
         Server.server = http.createServer(Server.application);
         Server.websockets = SocketIO(Server.server, {
             path: '/api/io',
             serveClient: false,
-            // below are engine.IO options
             pingInterval: 10000,
             pingTimeout: 5000,
             cookie: false
         });
 
-        Server.server.listen(Config.port);
+        Server.server.listen(PORT);
         Server.server.on('listening', Server.onListening);
+        Server.websockets.on('connection', (socket) => {
+            console.log('[IO] Socket connected');
+        });
     }
 
     public static socketio(): SocketIO.Server {
@@ -50,8 +50,8 @@ export class Server {
         console.log('# Initialising ..');
         console.log('# Loading dependancies ..');
         console.log('-------------------------');
-        // console.log(`@ IP: ${globalConfig.sys.localaddress}:${globalConfig.sys.port} \n@ ./: 127.0.0.1:${globalConfig.sys.port}`);
         console.log(`Listening on: ${bind}`);
         console.log('-------------------------');
     }
+
 }
