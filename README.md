@@ -5,3 +5,8 @@ Description following code soon (TM)
 
 
 (NPM install, don't forget the config file, etc)
+
+
+#### Credits
+
+KNMI Weather Data obtained through [weerlive.nl](http://weerlive.nl/delen.php)

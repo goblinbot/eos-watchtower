@@ -3,9 +3,10 @@ import * as Config from '../../_config/config.json';
 import * as SocketIO from 'socket.io';
 import * as http from 'http';
 import { Express } from 'express';
-
+import * as ip from 'ip';
 
 const PORT = (Config.port ? Config.port : 3000);
+const IP = ip.address();
 
 export class Server {
     private static server: http.Server;
@@ -50,6 +51,7 @@ export class Server {
         console.log('# Initialising ..');
         console.log('# Loading dependancies ..');
         console.log('-------------------------');
+        console.log(`IP: ${IP}`)
         console.log(`Listening on: ${bind}`);
         console.log('-------------------------');
     }
