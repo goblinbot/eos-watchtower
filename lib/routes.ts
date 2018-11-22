@@ -16,11 +16,10 @@ export class Routes {
 
     private static getRoutes(app: Express): Express {
 
-        // Start with a few default, nameless routes.
+        // Start with the default 'landing'.
         app.route('/').get((req: Request, res: Response) => {
-            res.status(200).send({message: `Welcome to the ${Config.name} API.`});
+            res.redirect('/api/');
         });
-
         app.route('/api/').get((req: Request, res: Response) => {
             res.status(200).send({ message: `Welcome to the ${Config.name} API.` });
         });
@@ -41,6 +40,7 @@ export class Routes {
         // Use an error handler in all remaining cases.
         app.use('*', Routes.errorHandler);
 
+        console.log('[RO] Routes done loading.')
         return app;
     }
 

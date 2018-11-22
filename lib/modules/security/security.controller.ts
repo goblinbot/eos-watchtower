@@ -1,5 +1,5 @@
 import * as SecData from '../../bin/data/security.json';
-import { securityModel } from '../../bin/models/securitylevels';
+import { SecurityModel } from '../../bin/models/securitylevels';
 import * as Config from '../../../_config/config.json';
 // TODO import config for default
 
