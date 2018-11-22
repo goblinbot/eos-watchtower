@@ -7,7 +7,7 @@
     "test": "jarvis",
     "build": "tsc",
     "dev": "ts-node ./lib/index.ts",
-    "start": "nodemon ./dist/index.js",
+    "start": "nodemon ./dist/lib/index.js",
     "prod": "npm run build && npm run start"
   },
   "repository": {
