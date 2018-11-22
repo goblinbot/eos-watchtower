@@ -8,5 +8,8 @@
     "weather": {
         "enabled": true,
         "api_url": "http://weerlive.nl/api/json-data-10min.php?key=demo&locatie=Amsterdam"
+    },
+    "portal": {
+        "enabled": true
     }
 }

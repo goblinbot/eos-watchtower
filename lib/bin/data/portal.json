@@ -1,0 +1,39 @@
+{
+    "default": {
+      "fa-icon": "check-circle-o",
+      "title": "Operational",
+      "subtitle": "Nothing to report.",
+      "blink": false
+    },
+    "active": {
+        "fa-icon": "cog",
+        "fa-icon-spin": true,
+        "title": "Active",
+        "subtitle": "Portal activity detected ...",
+        "blink": true
+    },
+    "unstable": {
+        "fa-icon": "angle-double-down",
+        "title": "Connectivity issues",
+        "subtitle": "Portal network unstable. Package loss may occur.",
+        "blink": true
+    },
+    "multirequest": {
+        "fa-icon": "warning",
+        "title": "Multiple requests",
+        "subtitle": "Multiple external requests detected. Please stand by.",
+        "blink": true
+    },
+    "maintenance": {
+        "fa-icon": "info-circle",
+        "title": "Maintenance required",
+        "subtitle": "Safety first.",
+        "blink": true
+    },
+    "shutdown": {
+        "fa-icon": "warning",
+        "title": "OFFLINE",
+        "subtitle": "Portal services currently unavailable.",
+        "blink": true
+    }
+}
