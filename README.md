@@ -50,7 +50,7 @@ or
 - Transport Custom Upgrades / Modifications
 
 
-#### Extra Credits
+#### Credits
 
 **Weather Api:**
 Dutch weather data (KNMI) obtained through [weerlive.nl](http://weerlive.nl/delen.php)
