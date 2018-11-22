@@ -25,18 +25,18 @@ export class WeatherController {
      */
     public static convertToWeatherData(inputJson: any): WeatherData {
         const weather = new WeatherData();
-            weather.lastupdated = Date.now();
+            weather.lastUpdated = Date.now();
             weather.temperature = inputJson.temp;
             weather.windkmh = inputJson.windKmh;
-            weather.winddirection = inputJson.windr;
-            weather.sunup = inputJson.sup;
-            weather.sundown = inputJson.sunder;
-            weather.tempmin = inputJson.d0tmin;
-            weather.tempmax= inputJson.d0tmax;
-            weather.chanceofrain = inputJson.d0neerslag;
-            weather.tempminnext = inputJson.d1tmin;
-            weather.tempmaxnext = inputJson.d1tmax;
-            weather.chanceofrainnext = inputJson.d1neerslag;
+            weather.windDirection = inputJson.windr;
+            weather.sunUp = inputJson.sup;
+            weather.sunDown = inputJson.sunder;
+            weather.tempMin = inputJson.d0tmin;
+            weather.tempMax= inputJson.d0tmax;
+            weather.chanceOfRain = inputJson.d0neerslag;
+            weather.tempMinNext = inputJson.d1tmin;
+            weather.tempMaxNext = inputJson.d1tmax;
+            weather.chanceOfRainNext = inputJson.d1neerslag;
         return weather;
     }
 
@@ -69,7 +69,7 @@ export class WeatherController {
             if (!error && result.statusCode === 200) {
                 WeatherController.setCurrentWeather(body);
             } else {
-                console.error(`ERR: getLiveWeatherData => status: ${result.statusCode}, error: ${error}`)
+                console.error(`ERR: getLiveWeatherData => error: ${error}`);
             }
         });
     }
