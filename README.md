@@ -9,9 +9,11 @@ Originally eos-beacon was a single nodeJS instance that ran websockets, the fron
 
 Make sure you have NodeJS installed. Use your terminal/command prompt of choice and... :
 
-``git clone git@github.com:goblinbot/eos-watchtower.git     (or clone on your own)
+```
+git clone git@github.com:goblinbot/eos-watchtower.git     (or clone on your own)
 cd eos-watchtower
-npm install``
+npm install
+```
 
 Before you can start, make sure to create a **config.json** file in the "_config" folder. You can just rename the config.sample.json file if you don't want any setting changed.
 
