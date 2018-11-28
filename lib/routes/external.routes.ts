@@ -1,12 +1,12 @@
-// WEATHER JSON API FOR VERY NEAR LOCATION, MAX 300 REQUESTS PER 24 HOURS
-// http://weerlive.nl/api/json-data-10min.php?key=d2a2b44c24&locatie=Eijsden
+/**
+ * @description EXTERNAL ROUTES is defined as routes that use external/online data.
+ */
 
 import { Router } from 'express';
 import { WeatherController } from '../modules/weather/weather.controller';
 
 // Routes for the Weather API/Module
 export class WeatherRoutes {
-    /** @returns {Router} */
     public static getRoutes(): Router {
         const router = Router();
 

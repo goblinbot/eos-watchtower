@@ -13,7 +13,8 @@ export class WeatherController {
     };
 
     /**
-     * @description Initialise the WeatherController
+     * @description Initialise the WeatherController:
+     * - Starts a CronJob to repeat every 15 minutes, which updates the WEATHER data.
      */
     public static init(): void {
         if (Config.weather.api_url) {

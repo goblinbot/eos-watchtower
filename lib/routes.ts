@@ -1,5 +1,6 @@
 import { Express, Request, Response, Router } from 'express';
 import { BeaconRouter } from './routes/beacon.routes';
+import { TimeRoutes } from './routes/time.routes';
 import { SecLevel } from './routes/security.routes';
 import { PortalRoutes } from './routes/portal.routes';
 import { WeatherRoutes } from './routes/external.routes';
@@ -25,18 +26,11 @@ export class Routes {
             res.status(200).send({ message: `Welcome to the ${Config.name} API.` });
         });
 
-        // Beacon routes are always enabled by default.
+        // Most routes are always enabled by default.
         app.use('/api/beacon', BeaconRouter.getRoutes());
-
-        // Use the security module, if enabled in config.json
-        if (Config.security.enabled) {
-            app.use('/api/security', SecLevel.getRoutes());
-        }
-
-        // use the portal module, if enabled in config.json
-        if (Config.portal.enabled) {
-            app.use('/api/portal', PortalRoutes.getRoutes());
-        }
+        app.use('/api/time', TimeRoutes.getRoutes());
+        app.use('/api/security', SecLevel.getRoutes());
+        app.use('/api/portal', PortalRoutes.getRoutes());
 
         // use the weather module, if enabled in config.json
         if (Config.weather.enabled) {
