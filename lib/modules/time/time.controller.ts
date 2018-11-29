@@ -15,7 +15,7 @@ export class TimeController {
          */
         if (!this.ingameDate) {
             this.ingameDate = this.convertToIcDate({
-                ocEventStart: new Date(2018, 10, 25, 12), // 30 november 2018 / 30-11-2018, at 12 o clock for timezone shenanigans.
+                ocEventStart: new Date(2018, 10, 30, 12), // 30 november 2018 / 30-11-2018, at 12 o clock for timezone shenanigans.
                 icStartDay: 27,
                 icStartMonth: 3,
                 icStartYear: 240,
