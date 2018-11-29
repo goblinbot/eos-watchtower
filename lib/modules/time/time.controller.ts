@@ -15,7 +15,7 @@ export class TimeController {
          */
         if (!this.ingameDate) {
             this.ingameDate = this.convertToIcDate({
-                ocEventStart: new Date(2018, 10, 30, 12), // 30 november 2018 / 30-11-2018, at 12 o clock for timezone shenanigans.
+                ocEventStart: new Date(2018, 10, 25, 12), // 30 november 2018 / 30-11-2018, at 12 o clock for timezone shenanigans.
                 icStartDay: 27,
                 icStartMonth: 3,
                 icStartYear: 240,
@@ -76,19 +76,13 @@ export class TimeController {
      * @description calculate the day of the week, 1 - 7.
      */
     private static calculateDayOfWeek(start: number, ocEventStart: Date): number {
-        let dayOfWeek = start;
         const ocStartDay = moment(ocEventStart).date();
         const currentDay = moment().date();
         let difference = currentDay - ocStartDay;
-        // Loop to make the difference round to the nearest 0-7.
-        if(difference > 7) {
-            for(let i = 0; difference > 7; i++) {
-                difference = difference-7;
-            }
-        }
-        // add difference if needed.
-        if (difference > 1) {
-            dayOfWeek = (dayOfWeek + difference);
+        let dayOfWeek = (start + difference);
+        // Loop to make the difference round to the nearest 1-7.
+        while (dayOfWeek > 7) {
+            dayOfWeek = (dayOfWeek - 7);
         }
         return dayOfWeek;
     }
