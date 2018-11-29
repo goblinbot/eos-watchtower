@@ -1,12 +1,11 @@
 import * as SecData from '../../bin/data/security.json';
 import { SecurityModel } from '../../bin/models/securitylevels';
 import * as Config from '../../../_config/config.json';
-// TODO import config for default
+import { Server } from '../../bin/server';
 
 export class SecurityController {
 
-    // default
-    private static defaultSecLevel = 'green';
+    private static defaultSecLevel = Config.security.default;
     private static currentSecLevel = SecData[SecurityController.defaultSecLevel];
 
     /**
@@ -25,6 +24,12 @@ export class SecurityController {
         return secLevel;
     }
 
+    /** @description sets the security level based on input. */
+    private static setSecurityLevel(input: any): void {
+        this.currentSecLevel = input;
+        this.onSecurityChange();
+    }
+
     /** @returns { All secdata } */
     public static getAll(): any {
         return SecData;
@@ -32,7 +37,7 @@ export class SecurityController {
 
     /** @description Resets to default */
     public static resetSecurityLevel(): void {
-        SecurityController.currentSecLevel = SecData[SecurityController.defaultSecLevel];
+        this.setSecurityLevel(SecData[SecurityController.defaultSecLevel]);
     }
 
     /**
@@ -42,15 +47,16 @@ export class SecurityController {
     public static updateSecurityLevel(input: string): boolean {
         if(input) {
             if (SecData[input]) {
-                SecurityController.currentSecLevel = SecData[input];
+                this.setSecurityLevel(SecData[input]);
                 return true;
             }
         }
         return false;
     }
 
-    // private static onSecurityChange() {
-        // websocket emit!
-    // }
+    /** @description Emit a websocket 'securityUpdate' for our dear listeners. */
+    public static onSecurityChange(): void {
+        Server.socketio().sockets.emit('securityUpdate', this.currentSecLevel);
+    }
 
 }
