@@ -1,4 +1,7 @@
-# eos-watchtower
+# eos-watchtower 🛰
+
+[![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
+
 Node/Express API with the purpose of enabling communication between tools on the LAIT/LARP Eos.
 
 Originally eos-beacon was a single nodeJS instance that ran websockets, the frontend and every other service on it's own. It was made in a time where NodeJS was very new to me and I'm still pretty proud of it, but it's time to split the front and backend.
