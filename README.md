@@ -1,6 +1,6 @@
-# eos-watchtower 🛰
-
 [![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
+
+# Eos-Watchtower 🛰
 
 Node/Express API with the purpose of enabling communication between tools on the LAIT/LARP Eos.
 
