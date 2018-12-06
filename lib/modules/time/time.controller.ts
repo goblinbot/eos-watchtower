@@ -79,7 +79,7 @@ export class TimeController {
         const ocStartDay = moment(ocEventStart).date();
         const currentDay = moment().date();
         let difference = currentDay - ocStartDay;
-        let dayOfWeek = (start + difference);
+        let dayOfWeek = (difference > 0 ? start + difference : start);
         // Loop to make the difference round to the nearest 1-7.
         while (dayOfWeek > 7) {
             dayOfWeek = (dayOfWeek - 7);
