@@ -40,7 +40,7 @@ export class Routes {
         // Use an error handler in all remaining cases.
         app.use('*', Routes.errorHandler);
 
-        console.log('[RO] Routes done loading.')
+        console.log('[RO] Routes done loading.');
         return app;
     }
 
