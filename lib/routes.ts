@@ -4,6 +4,7 @@ import { TimeRoutes } from './routes/time.routes';
 import { SecLevel } from './routes/security.routes';
 import { PortalRoutes } from './routes/portal.routes';
 import { WeatherRoutes } from './routes/external.routes';
+import { FobRoutes } from './routes/fob.routes';
 import * as Config from '../_config/config.json';
 
 export class Routes {
@@ -30,6 +31,7 @@ export class Routes {
         app.use('/api/beacon', BeaconRouter.getRoutes());
         app.use('/api/time', TimeRoutes.getRoutes());
         app.use('/api/security', SecLevel.getRoutes());
+        app.use('/api/fob', FobRoutes.getRoutes());
         app.use('/api/portal', PortalRoutes.getRoutes());
 
         // use the weather module, if enabled in config.json
@@ -40,7 +42,7 @@ export class Routes {
         // Use an error handler in all remaining cases.
         app.use('*', Routes.errorHandler);
 
-        console.log('[RO] Routes done loading.');
+        console.log('\x1b[32m[RO] Routes done loading.\x1b[0m');
         return app;
     }
 
