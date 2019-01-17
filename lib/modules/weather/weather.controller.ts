@@ -18,7 +18,7 @@ export class WeatherController {
      */
     public static init(): void {
         if (Config.weather.api_url) {
-            console.log('[*CRON] WeatherUpdate cron set to repeat every 15th minute.');
+            console.log('\x1b[36m[*CRON] WeatherUpdate cron set to repeat every 15th minute.\x1b[0m');
             this.updateWeatherRepeater.start();
 
             if(!this.currentWeather) {
@@ -80,7 +80,7 @@ export class WeatherController {
      * @description Sets a CronJob to update the weather automatically every 15 minutes.
      */
     private static updateWeatherRepeater = new CronJob('*/15 * * * *', function () {
-        console.log(`[*CRON] trigger: updateWeatherRepeater, ${new Date()}`);
+        console.log(`[*CRON] trigger: \x1b[32mupdateWeatherRepeater\x1b[0m, ${new Date()}`);
         WeatherController.getLiveWeatherData();
     });
 

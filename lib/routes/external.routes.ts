@@ -5,7 +5,6 @@
 import { Router } from 'express';
 import { WeatherController } from '../modules/weather/weather.controller';
 
-// Routes for the Weather API/Module
 export class WeatherRoutes {
     public static getRoutes(): Router {
         const router = Router();
