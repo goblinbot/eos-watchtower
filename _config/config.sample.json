@@ -7,5 +7,6 @@
     "weather": {
         "enabled": true,
         "api_url": "http://weerlive.nl/api/json-data-10min.php?key=demo&locatie=Amsterdam"
-    }
+    },
+    "db": "mongodb://localhost:27017/sample"
 }
