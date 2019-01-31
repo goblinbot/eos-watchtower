@@ -1,5 +1,7 @@
 import * as moment from 'moment';
 import { IcDate } from '../../bin/models/time';
+import { Server } from '../../bin/server';
+const CronJob = require('cron').CronJob;
 
 export class TimeController {
 
@@ -15,7 +17,15 @@ export class TimeController {
                 icYearAfter: 'NT'
             });
         }
+
+        console.log('\x1b[36m[*CRON] TimeSocket cron set to trigger at Midnight.\x1b[0m');
+        this.midnightUpdateCronJob.start();
     }
+
+    private static midnightUpdateCronJob = new CronJob('0 0 * * *', function () {
+        console.log(`[*CRON] trigger: \x1b[32m{midnightUpdateCronJob}\x1b[0m, ${new Date()}`);
+        Server.socketio().sockets.emit('inGameDateUpdate');
+    });
 
     private static convertToIcDateObject(input: any): IcDate {
         let convertedDate = new IcDate();

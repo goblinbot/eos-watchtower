@@ -1,35 +1,31 @@
 import Fob from '../../bin/models/fob';
 import { Server } from '../../bin/server';
+import { MOCKFOBS } from '../../bin/data/mockfobs';
 
 export class FobController {
 
     // private static fobListFull: any;
 
     public static init(): void {
-        // this.createFobInDB({
-        //     name: 'Oni',
-        //     coordinates: 'G7',
-        //     forces: 211,
-        //     status: 'Under siege',
-        //     supplyPercentage: 70,
-        // });
-        // this.createFobInDB({
-        //     name: 'Thorax',
-        //     coordinates: 'B6',
-        //     forces: 0,
-        //     status: 'OK',
-        //     supplyPercentage: 0,
-        // });
-        // this.createFobInDB({
-        //     name: 'Hurricane',
-        //     coordinates: 'b5',
-        //     forces: 64,
-        //     status: 'OK',
-        //     supplyPercentage: 10,
+
+        // TEST CODE: CREATE FULL FOB DB FROM MOCKFOBS;
+
+        // MOCKFOBS.forEach(mockfob => {
+        //     this.createFobInDB({
+        //         name: mockfob.name,
+        //         coordinates: mockfob.coordinates,
+        //         forces: mockfob.forces,
+        //         status: mockfob.status,
+        //         orderCode: mockfob.orderCode,
+        //         foodSupplyPercentage: mockfob.foodSupplyPercentage,
+        //         weaponSupplyPercentage: mockfob.weaponSupplyPercentage,
+        //         medicalSupplyPercentage: mockfob.medicalSupplyPercentage,
+        //         classes: ''
+        //     });
         // });
     }
 
-    public static createFobInDB(fob: { name: string, coordinates: string, forces: number, status: string, supplyPercentage: number }): void {
+    public static createFobInDB(fob): void {
         const newFob = new Fob(fob);
         newFob.save();
     }
