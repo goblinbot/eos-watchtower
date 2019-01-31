@@ -29,7 +29,7 @@ export class Server {
 
         Server.server.listen(PORT);
         Server.websockets.on('connection', (socket) => {
-            console.log('[IO] Socket connection established.');
+            // console.log('[.IO] Socket connection established.');
         });
         Server.server.on('listening', Server.onListening);
     }
@@ -52,8 +52,6 @@ export class Server {
         console.log(' ##');
         console.log('/##\\_____________________\n');
         console.log('# Initialising ..');
-        console.log('# Loading dependancies ..');
-        console.log('-------------------------');
         console.log(`IP: \x1b[36m${IP}\x1b[0m`)
         console.log(`Listening on: \x1b[36m${bind}\x1b[0m`);
         console.log('-------------------------');

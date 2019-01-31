@@ -1,11 +1,12 @@
 import { Express, Request, Response, Router } from 'express';
+import * as Config from '../_config/config.json';
 import { BeaconRouter } from './routes/beacon.routes';
 import { TimeRoutes } from './routes/time.routes';
 import { SecLevel } from './routes/security.routes';
 import { PortalRoutes } from './routes/portal.routes';
 import { WeatherRoutes } from './routes/external.routes';
 import { FobRoutes } from './routes/fob.routes';
-import * as Config from '../_config/config.json';
+import { MissionRoutes } from './routes/mission.routes';
 
 export class Routes {
 
@@ -32,6 +33,7 @@ export class Routes {
         app.use('/api/time', TimeRoutes.getRoutes());
         app.use('/api/security', SecLevel.getRoutes());
         app.use('/api/fob', FobRoutes.getRoutes());
+        app.use('/api/missions', MissionRoutes.getRoutes());
         app.use('/api/portal', PortalRoutes.getRoutes());
 
         // use the weather module, if enabled in config.json

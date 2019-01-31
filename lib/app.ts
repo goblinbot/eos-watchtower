@@ -8,6 +8,7 @@ import * as Config from '../_config/config.json';
 
 import { WeatherController } from './modules/weather/weather.controller';
 import { FobController } from './modules/fob/fob.controller';
+import { MissionController } from './modules/mission/mission.controller';
 
 export class App {
 
@@ -33,9 +34,11 @@ export class App {
             WeatherController.init();
         }
         FobController.init();
+        MissionController.init();
     }
 
     constructor() {
+        console.log('# Loading dependancies ..');
         App.app = express();
         this.config();
         this.setCrossOriginResourceSharing();
