@@ -4,6 +4,7 @@ import * as SocketIO from 'socket.io';
 import * as http from 'http';
 import { Express } from 'express';
 import * as ip from 'ip';
+import * as mongoose from 'mongoose';
 
 const PORT = (Config.port ? Config.port : 3000);
 const IP = ip.address();
@@ -17,20 +18,20 @@ export class Server {
         Server.application = app.application;
         Server.application.set('port', PORT);
 
+        // mongoose.Promise = global.Promise;
+        mongoose.connect(Config.db, { useNewUrlParser: true }).then(
+            () => { console.log('[&MONG] Database is connected') },
+            err => { console.log('[&MONG] Can not connect to the database' + err) }
+        );
+
         Server.server = http.createServer(Server.application);
-        Server.websockets = SocketIO(Server.server, {
-            path: '/api/io',
-            serveClient: false,
-            pingInterval: 10000,
-            pingTimeout: 5000,
-            cookie: false
-        });
+        Server.websockets = SocketIO(Server.server);
 
         Server.server.listen(PORT);
-        Server.server.on('listening', Server.onListening);
         Server.websockets.on('connection', (socket) => {
-            console.log('[IO] Socket connected');
+            // console.log('[.IO] Socket connection established.');
         });
+        Server.server.on('listening', Server.onListening);
     }
 
     public static socketio(): SocketIO.Server {
@@ -43,16 +44,14 @@ export class Server {
         console.log('  .');
         console.log('  |>');
         console.log(' _|');
-        console.log('(==)')
+        console.log('(\x1b[33m==\x1b[0m)')
         console.log(' ## ');
         console.log(` ##   { ${Config.name.toUpperCase()} }`);
         console.log(' ##');
         console.log('/##\\_____________________\n');
         console.log('# Initialising ..');
-        console.log('# Loading dependancies ..');
-        console.log('-------------------------');
-        console.log(`IP: ${IP}`)
-        console.log(`Listening on: ${bind}`);
+        console.log(`IP: \x1b[36m${IP}\x1b[0m`)
+        console.log(`Listening on: \x1b[36m${bind}\x1b[0m`);
         console.log('-------------------------');
     }
 
