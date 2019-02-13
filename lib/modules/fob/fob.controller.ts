@@ -9,20 +9,6 @@ export class FobController {
     public static init(): void {
 
         // TEST CODE: CREATE FULL FOB DB FROM MOCKFOBS;
-
-        // MOCKFOBS.forEach(mockfob => {
-        //     this.createFobInDB({
-        //         name: mockfob.name,
-        //         coordinates: mockfob.coordinates,
-        //         forces: mockfob.forces,
-        //         status: mockfob.status,
-        //         orderCode: mockfob.orderCode,
-        //         foodSupplyPercentage: mockfob.foodSupplyPercentage,
-        //         weaponSupplyPercentage: mockfob.weaponSupplyPercentage,
-        //         medicalSupplyPercentage: mockfob.medicalSupplyPercentage,
-        //         classes: ''
-        //     });
-        // });
     }
 
     public static createFobInDB(fob): void {
@@ -44,6 +30,22 @@ export class FobController {
         }).catch((err) => {
             res.status(400);
             res.json([]);
+        });
+    }
+
+    public fillDbWithMockFobs() {
+        MOCKFOBS.forEach(mockfob => {
+            FobController.createFobInDB({
+                name: mockfob.name,
+                coordinates: mockfob.coordinates,
+                forces: mockfob.forces,
+                status: mockfob.status,
+                orderCode: mockfob.orderCode,
+                foodSupplyPercentage: mockfob.foodSupplyPercentage,
+                weaponSupplyPercentage: mockfob.weaponSupplyPercentage,
+                medicalSupplyPercentage: mockfob.medicalSupplyPercentage,
+                classes: ''
+            });
         });
     }
 
