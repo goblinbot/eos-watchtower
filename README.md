@@ -3,6 +3,7 @@
 # Eos-Watchtower 🛰
 
 Node/Express REST API with the purpose of enabling communication between tools on the LAIT/LARP Eos.
+=======
 
 Originally eos-beacon was a single nodeJS instance that ran websockets, the frontend and every other service on it's own. It was made in a time where NodeJS was very new to me and I'm still pretty proud of it, but it's time to split the front and backend.
 
