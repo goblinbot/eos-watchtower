@@ -8,6 +8,12 @@ export class FobRoutes {
 
         router.route('/').get(fobController.getAllFobsFromDB);
 
+        // enter MOCKFOBS
+        router.route('/addmockfobs').get((req, res) => {
+            fobController.fillDbWithMockFobs();
+            res.status(200).send({ message: 'MockFobs == go' });
+        });
+
         console.log('[RO] ..FoB Routes added.');
         return router;
     }
