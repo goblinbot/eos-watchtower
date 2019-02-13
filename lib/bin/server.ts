@@ -38,8 +38,6 @@ export class Server {
         return Server.websockets;
     }
 
-
-
     private static onListening(): void {
         const address = Server.server.address();
         const bind = (typeof address === 'string') ? `pipe ${address}` : `port ${address.port}`;
