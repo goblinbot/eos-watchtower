@@ -8,40 +8,35 @@ export class MissionController {
 
     public static init(): void {
 
-        // TEST CODE: CREATE FULL MISSION DB FROM MOCKMISSIONS;
-
-        MOCKMISSIONS.forEach(mockmission => {
-            // this.createMissionInDB({
-            //     priority: mockmission.priority,
-            //     creationtimestamp: mockmission.creationtimestamp,
-            //     type: mockmission.type,
-            //     goal: mockmission.goal,
-            //     title: mockmission.title,
-            //     authorised: mockmission.authorised,
-            //     authorisedby: mockmission.authorisedby,
-            //     xo: mockmission.xo,
-            //     icdate: mockmission.icdate,
-            //     time: mockmission.time,
-            //     delayed: false,
-            //     editcounter: 0,
-            // });
-            console.log('  [Mission]:'+mockmission.title);
-        });
-
     }
 
-    public static createMissionInDB(missions): void {
+    public createMission(mission: any): void {
+        MissionController.createMissionInDB(mission);
+    }
+
+    private static createMissionInDB(missions): void {
         const newMission = new Mission(missions);
         newMission.save(() => {
             MissionController.emitOnMissionChanges();
         });
+    }
 
+    public deleteMission(mission: any): void {
+        Mission.deleteOne(mission, () => {
+            MissionController.emitOnMissionChanges();
+        });
+    }
+
+    public updateMission(mission: any): void {
+        Mission.updateOne(mission, err => {
+            MissionController.emitOnMissionChanges();
+        });
     }
 
     private static async emitOnMissionChanges(): Promise<void> {
-        // if(Server.socketio()) {
-        //     Server.socketio().sockets.emit('MissionUpdate', this.fobListFull);
-        // }
+        if(Server.socketio()) {
+            Server.socketio().sockets.emit('MissionUpdate');
+        }
     }
 
     getAllMissionsFromDB = async (req, res) => {

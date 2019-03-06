@@ -9,6 +9,18 @@ export class MissionRoutes {
 
         router.route('/').get(missionController.getAllMissionsFromDB);
 
+        router.route('/new').post((req, res) => {
+            missionController.createMission(req.body);
+        });
+
+        router.route('/delete').post((req, res) => {
+            missionController.deleteMission(req.body);
+        });
+
+        router.route('/update').post((req, res) => {
+            missionController.updateMission(req.body);
+        });
+
         console.log('[RO] ..Mission Routes added.');
         return router;
     }
