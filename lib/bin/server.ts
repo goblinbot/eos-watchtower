@@ -2,12 +2,24 @@ import { App } from "../app";
 import * as Config from '../../_config/config.json';
 import * as SocketIO from 'socket.io';
 import * as http from 'http';
+import * as https from 'https';
 import { Express } from 'express';
 import * as ip from 'ip';
 import * as mongoose from 'mongoose';
+import { readFileSync } from 'fs';
 
 const PORT = (Config.port ? Config.port : 3000);
 const IP = ip.address();
+let SSLOPTIONS;
+
+if (Config.ssl.enabled) {
+    SSLOPTIONS = {
+        key: readFileSync(Config.ssl.key_path),
+        cert: readFileSync(Config.ssl.cert_path)
+    }
+}
+
+
 
 export class Server {
     private static server: http.Server;
@@ -17,6 +29,7 @@ export class Server {
     public create(app: App): void {
         Server.application = app.application;
         Server.application.set('port', PORT);
+
 
         // mongoose.Promise = global.Promise;
         mongoose.connect(Config.db, { useNewUrlParser: true }).then(
@@ -32,6 +45,15 @@ export class Server {
             // console.log('[.IO] Socket connection established.');
         });
         Server.server.on('listening', Server.onListening);
+
+
+        if (Config.ssl.enabled) {
+            const httpsServer = https.createServer(SSLOPTIONS, Server.application);
+
+            httpsServer.listen(Config.ssl.port, () => {
+                console.log(`HTTPS server ALSO running on ${Config.ssl.port}`);
+            });
+        }
     }
 
     public static socketio(): SocketIO.Server {

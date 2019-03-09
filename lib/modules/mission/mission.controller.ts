@@ -4,8 +4,6 @@ import { MOCKMISSIONS } from '../../bin/data/mockmissions';
 
 export class MissionController {
 
-    // private static MissionListFull: any;
-
     public static init(): void {
 
     }
@@ -28,12 +26,13 @@ export class MissionController {
     }
 
     public updateMission(mission: any): void {
-        Mission.updateOne(mission, err => {
+        Mission.updateOne( { _id: mission._id }, mission, (err, obj) => {
             MissionController.emitOnMissionChanges();
         });
     }
 
     private static async emitOnMissionChanges(): Promise<void> {
+        console.log('SOCKETUPDATE MISS event');
         if(Server.socketio()) {
             Server.socketio().sockets.emit('MissionUpdate');
         }

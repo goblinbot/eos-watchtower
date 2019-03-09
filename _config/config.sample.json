@@ -8,5 +8,11 @@
         "enabled": true,
         "api_url": "http://weerlive.nl/api/json-data-10min.php?key=demo&locatie=Amsterdam"
     },
+    "ssl": {
+        "enabled": true,
+        "key_path": "./ssl/sample_privatekey.pem",
+        "cert_path": "./ssl/sample_certificate.pem",
+        "port": 443
+    },
     "db": "mongodb://localhost:27017/sample"
 }

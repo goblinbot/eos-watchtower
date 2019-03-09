@@ -39,6 +39,7 @@
     "emoji-strip": "^1.0.1",
     "express": "^4.16.4",
     "express-async-router": "^0.1.15",
+    "fs": "0.0.1-security",
     "ip": "^1.1.5",
     "moment": "^2.23.0",
     "mongoose": "^5.4.4",
