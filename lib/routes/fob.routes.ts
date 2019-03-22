@@ -14,6 +14,11 @@ export class FobRoutes {
             res.status(200).send({ message: 'MockFobs == go' });
         });
 
+        router.route('/update').post((req, res) => {
+            fobController.updateFob(req.body);
+            res.status(200).send({ message: 'Fob editted' });
+        });
+
         console.log('[RO] ..FoB Routes added.');
         return router;
     }
