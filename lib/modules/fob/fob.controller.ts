@@ -17,12 +17,12 @@ export class FobController {
     }
 
     private static async emitOnFobChanges(): Promise<void> {
-        // if(Server.socketio()) {
-        //     Server.socketio().sockets.emit('fobUpdate', this.fobListFull);
-        // }
+        if (Server.socketio()) {
+            Server.socketio().sockets.emit('fobUpdate');
+        }
     }
 
-    getAllFobsFromDB = async (req, res) => {
+    public getAllFobsFromDB = async (req, res) => {
         Fob.find((err: any, fobs: any) => {
             // return fobs;
         }).then((fobs: any) => {
@@ -33,7 +33,16 @@ export class FobController {
         });
     }
 
-    public fillDbWithMockFobs() {
+    public updateFob(fob: any): any {
+        Fob.updateOne({ _id: fob._id }, fob, (err, obj) => {
+            FobController.emitOnFobChanges();
+        }).then(res => {
+            // console.log(res);
+        });
+
+    }
+
+    public fillDbWithMockFobs(): void {
         MOCKFOBS.forEach(mockfob => {
             FobController.createFobInDB({
                 name: mockfob.name,
@@ -47,6 +56,7 @@ export class FobController {
                 classes: ''
             });
         });
+        FobController.emitOnFobChanges();
     }
 
 }
