@@ -37,7 +37,7 @@ export class FobController {
         Fob.updateOne({ _id: fob._id }, fob, (err, obj) => {
             FobController.emitOnFobChanges();
         }).then(res => {
-            console.log(res);
+            // console.log(res);
         });
 
     }

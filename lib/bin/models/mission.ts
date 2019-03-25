@@ -13,6 +13,7 @@ export interface IMission extends mongoose.Document {
     /*debriefagent?: string;*/
     xo: string;
     icdate: string; // string? Yup. In-game date.
+    shuttle: string;
     departureTime: Date;
     delayed: boolean;
     editcounter: number;
@@ -29,6 +30,7 @@ export const MissionSchema = new mongoose.Schema({
     colorcode: { type: String },
     xo: { type: String },
     icdate: { type: String },
+    shuttle: { type: String },
     departureTime: { type: Date },
     delayed: { type: Boolean },
     editcounter: { type: Number },
