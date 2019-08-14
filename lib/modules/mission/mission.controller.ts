@@ -48,4 +48,5 @@ export class MissionController {
             res.json([]);
         });
     }
+
 }
