@@ -4,10 +4,7 @@ import { MOCKFOBS } from '../../bin/data/mockfobs';
 
 export class FobController {
 
-    // private static fobListFull: any;
-
     public static init(): void {
-
         // TEST CODE: CREATE FULL FOB DB FROM MOCKFOBS;
     }
 
@@ -34,6 +31,7 @@ export class FobController {
     }
 
     public updateFob(fob: any): any {
+
         Fob.updateOne({ _id: fob._id }, fob, (err, obj) => {
             FobController.emitOnFobChanges();
         }).then(res => {
