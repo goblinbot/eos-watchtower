@@ -1,5 +1,4 @@
-import { Express, Request, Response, Router } from 'express';
-import Config from '../_config/config.json';
+import { Express, Request, Response } from 'express';
 import { BeaconRouter } from './routes/beacon.routes';
 import { TimeRoutes } from './routes/time.routes';
 import { SecLevel } from './routes/security.routes';
@@ -7,6 +6,7 @@ import { PortalRoutes } from './routes/portal.routes';
 import { WeatherRoutes } from './routes/external.routes';
 import { FobRoutes } from './routes/fob.routes';
 import { MissionRoutes } from './routes/mission.routes';
+const config = require('../_config/config.json');
 
 export class Routes {
 
@@ -25,7 +25,7 @@ export class Routes {
             res.redirect('/api/');
         });
         app.route('/api/').get((req: Request, res: Response) => {
-            res.status(200).send({ message: `Welcome to the ${Config.name} API.` });
+            res.status(200).send({ message: `Welcome to the ${config.name} API.` });
         });
 
         // Most routes are always enabled by default.
@@ -37,7 +37,7 @@ export class Routes {
         app.use('/api/portal', PortalRoutes.getRoutes());
 
         // use the weather module, if enabled in config.json
-        if (Config.weather.enabled) {
+        if (config.weather.enabled) {
             app.use('/api/weather', WeatherRoutes.getRoutes());
         }
 

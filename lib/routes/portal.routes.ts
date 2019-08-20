@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import PortalData from '../bin/data/portal.json';
 import { PortalController } from '../modules/portal/portal.controller';
+const portalData = require('../bin/data/portal.json');
 
 // Routes for the Gateway/Portal API/Module
 export class PortalRoutes {
@@ -18,7 +18,7 @@ export class PortalRoutes {
         /**
          * @description get the full portal JSON */
         router.route('/all').get((req, res) => {
-            res.status(200).send(PortalData);
+            res.status(200).send(portalData);
         });
 
         console.log('[RO] ..Portal Routes added.');
