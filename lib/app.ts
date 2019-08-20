@@ -1,10 +1,10 @@
 import { Express } from 'express';
-import * as express from 'express';
-import * as cors from 'cors';
-import * as bodyParser from 'body-parser';
-import * as SocketIO from 'socket.io';
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import SocketIO from 'socket.io';
 import { Routes } from './routes';
-import * as Config from '../_config/config.json';
+import Config from '../_config/config.json';
 
 import { WeatherController } from './modules/weather/weather.controller';
 import { FobController } from './modules/fob/fob.controller';

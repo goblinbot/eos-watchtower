@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as PortalData from '../bin/data/portal.json';
+import PortalData from '../bin/data/portal.json';
 import { PortalController } from '../modules/portal/portal.controller';
 
 // Routes for the Gateway/Portal API/Module

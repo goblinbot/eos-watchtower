@@ -1,11 +1,11 @@
 import { App } from "../app";
-import * as Config from '../../_config/config.json';
-import * as SocketIO from 'socket.io';
-import * as http from 'http';
-import * as https from 'https';
+import Config from '../../_config/config.json';
+import SocketIO from 'socket.io';
+import http from 'http';
+import https from 'https';
 import { Express } from 'express';
-import * as ip from 'ip';
-import * as mongoose from 'mongoose';
+import ip from 'ip';
+import mongoose from 'mongoose';
 import { readFileSync } from 'fs';
 
 const PORT = (Config.port ? Config.port : 3000);
