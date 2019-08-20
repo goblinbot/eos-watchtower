@@ -1,7 +1,10 @@
 {
   "name": "eos-watchtower",
-  "version": "1.0.0",
-  "description": "Eos LARP Rest API (WIP)",
+  "version": "1.0.1",
+  "description": "Eos LARP Rest API",
+  "engines": {
+    "node": "10.15.3"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jarvis",
