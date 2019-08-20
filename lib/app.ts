@@ -4,9 +4,12 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import SocketIO from 'socket.io';
 import { Routes } from './routes';
-let config = require('../_config/config.json');
 
-if(!config) {
+let config;
+
+try {
+    config = require('../_config/config.json');
+} catch (e) {
     config = require('../_config/config.sample.json');
 }
 
