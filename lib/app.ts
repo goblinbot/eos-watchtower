@@ -4,7 +4,11 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import SocketIO from 'socket.io';
 import { Routes } from './routes';
-import Config from '../_config/config.json';
+let config = require('../_config/config.json');
+
+if(!config) {
+    config = require('../_config/config.sample.json');
+}
 
 import { WeatherController } from './modules/weather/weather.controller';
 import { FobController } from './modules/fob/fob.controller';
@@ -30,7 +34,7 @@ export class App {
 
     // init modules.. move to other file?
     private initModules() {
-        if (Config.weather.enabled) {
+        if (config.weather.enabled) {
             WeatherController.init();
         }
         FobController.init();

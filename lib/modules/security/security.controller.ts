@@ -1,12 +1,12 @@
-import SecData from '../../bin/data/security.json';
+const secData = require('../../bin/data/security.json');
 // import { SecurityModel } from '../../bin/models/securitylevels';
-import Config from '../../../_config/config.json';
+const config = require('../../../_config/config.json');
 import { Server } from '../../bin/server';
 
 export class SecurityController {
 
-    private static defaultSecLevel = Config.security.default;
-    private static currentSecLevel = SecData[SecurityController.defaultSecLevel];
+    private static defaultSecLevel = config.security.default;
+    private static currentSecLevel = secData[SecurityController.defaultSecLevel];
 
 
     private static addTimestamp(secLevel): JSON {
@@ -21,13 +21,13 @@ export class SecurityController {
     }
 
     public static getAll(): any {
-        return SecData; // all of it
+        return secData; // all of it
     }
 
     public static updateSecurityLevel(input: string): boolean {
         if(input) {
-            if (SecData[input]) {
-                this.setSecurityLevel(SecData[input]);
+            if (secData[input]) {
+                this.setSecurityLevel(secData[input]);
                 return true;
             }
         }
@@ -35,7 +35,7 @@ export class SecurityController {
     }
 
     public static resetSecurityLevel(): void {
-        this.setSecurityLevel(SecData[SecurityController.defaultSecLevel]);
+        this.setSecurityLevel(secData[SecurityController.defaultSecLevel]);
     }
 
     private static setSecurityLevel(input: any): void {

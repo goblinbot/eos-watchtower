@@ -1,14 +1,14 @@
 import { WeatherData } from '../../bin/models/weather';
-import Config from '../../../_config/config.json';
 import request from "request";
 import { Server } from '../../bin/server';
 const CronJob = require('cron').CronJob;
+const config = require('../../../_config/config.json');
 
 export class WeatherController {
 
     public static currentWeather: WeatherData;
     private static options = {
-        uri: Config.weather.api_url,
+        uri: config.weather.api_url,
         json: true
     };
 
@@ -17,7 +17,7 @@ export class WeatherController {
      * - Starts a CronJob to repeat every 15 minutes, which updates the WEATHER data.
      */
     public static init(): void {
-        if (Config.weather.api_url) {
+        if (config.weather.api_url) {
             console.log('\x1b[36m[*CRON] WeatherUpdate cron set to repeat every 15th minute.\x1b[0m');
             this.updateWeatherRepeater.start();
 

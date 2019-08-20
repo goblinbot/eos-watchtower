@@ -1,5 +1,4 @@
 import { App } from "../app";
-import Config from '../../_config/config.json';
 import SocketIO from 'socket.io';
 import http from 'http';
 import https from 'https';
@@ -7,15 +6,17 @@ import { Express } from 'express';
 import ip from 'ip';
 import mongoose from 'mongoose';
 import { readFileSync } from 'fs';
+const config = require('../../_config/config.json');
 
-const PORT = (Config.port ? Config.port : 3000);
+
+const PORT = (config.port ? config.port : 3000);
 const IP = ip.address();
 let SSLOPTIONS;
 
-if (Config.ssl.enabled) {
+if (config.ssl.enabled) {
     SSLOPTIONS = {
-        key: readFileSync(Config.ssl.key_path),
-        cert: readFileSync(Config.ssl.cert_path)
+        key: readFileSync(config.ssl.key_path),
+        cert: readFileSync(config.ssl.cert_path)
     }
 }
 
@@ -32,7 +33,7 @@ export class Server {
 
 
         // mongoose.Promise = global.Promise;
-        mongoose.connect(Config.db, { useNewUrlParser: true }).then(
+        mongoose.connect(config.db, { useNewUrlParser: true }).then(
             () => { console.log('[&MONG] Database is connected') },
             err => { console.log('[&MONG] Can not connect to the database' + err) }
         );
@@ -47,11 +48,11 @@ export class Server {
         Server.server.on('listening', Server.onListening);
 
 
-        if (Config.ssl.enabled) {
+        if (config.ssl.enabled) {
             const httpsServer = https.createServer(SSLOPTIONS, Server.application);
 
-            httpsServer.listen(Config.ssl.port, () => {
-                console.log(`HTTPS server ALSO running on ${Config.ssl.port}`);
+            httpsServer.listen(config.ssl.port, () => {
+                console.log(`HTTPS server ALSO running on ${config.ssl.port}`);
             });
         }
     }
@@ -68,7 +69,7 @@ export class Server {
         console.log(' _|');
         console.log('(\x1b[33m==\x1b[0m)')
         console.log(' ## ');
-        console.log(` ##   { ${Config.name.toUpperCase()} }`);
+        console.log(` ##   { ${config.name.toUpperCase()} }`);
         console.log(' ##');
         console.log('/##\\_____________________\n');
         console.log('# Initialising ..');
