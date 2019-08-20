@@ -3,14 +3,11 @@ import SocketIO from 'socket.io';
 import http from 'http';
 import https from 'https';
 import { Express } from 'express';
-import ip from 'ip';
 import mongoose from 'mongoose';
 import { readFileSync } from 'fs';
 const config = require('../../_config/config.json');
 
-
 const PORT = (config.port ? config.port : 3000);
-const IP = ip.address();
 let SSLOPTIONS;
 
 if (config.ssl.enabled) {
@@ -19,8 +16,6 @@ if (config.ssl.enabled) {
         cert: readFileSync(config.ssl.cert_path)
     }
 }
-
-
 
 export class Server {
     private static server: http.Server;
@@ -62,8 +57,6 @@ export class Server {
     }
 
     private static onListening(): void {
-        const address = Server.server.address();
-        const bind = (typeof address === 'string') ? `pipe ${address}` : `port ${address.port}`;
         console.log('  .');
         console.log('  |>');
         console.log(' _|');
@@ -73,8 +66,7 @@ export class Server {
         console.log(' ##');
         console.log('/##\\_____________________\n');
         console.log('# Initialising ..');
-        console.log(`IP: \x1b[36m${IP}\x1b[0m`)
-        console.log(`Listening on: \x1b[36m${bind}\x1b[0m`);
+        console.log(`Listening on port: \x1b[36m${PORT}\x1b[0m`);
         console.log('-------------------------');
     }
 
