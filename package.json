@@ -8,10 +8,14 @@
   "main": "index.js",
   "scripts": {
     "test": "jarvis",
-    "build": "tsc",
+    "postinstall": "npm run build-ts",
+    "build-ts": "tsc",
     "dev": "ts-node ./lib/index.ts",
-    "start": "nodemon ./dist/lib/index.js",
-    "prod": "npm run build && npm run start"
+    "start": "npm run serve",
+    "serve": "node dist/index.js",
+    "watch-node": "nodemon dist/lib/index.js",
+    "watch-ts": "tsc -w",
+    "prod": "npm run build-ts && npm run start"
   },
   "repository": {
     "type": "git",
@@ -51,7 +55,7 @@
     "request-promise-native": "^1.0.5",
     "socket.io": "^2.2.0",
     "striptags": "^3.1.1",
-    "typegoose": "^5.4.1",
+    "typegoose": "^5.9.0",
     "typescript": "^3.2.2"
   }
 }
