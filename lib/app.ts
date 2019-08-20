@@ -4,14 +4,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import SocketIO from 'socket.io';
 import { Routes } from './routes';
-
-let config;
-
-try {
-    config = require('../_config/config.json');
-} catch (e) {
-    config = require('../_config/config.sample.json');
-}
+const config = require('../_config/config.json');
 
 import { WeatherController } from './modules/weather/weather.controller';
 import { FobController } from './modules/fob/fob.controller';
