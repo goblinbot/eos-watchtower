@@ -1,5 +1,5 @@
 import { Express, Request, Response, Router } from 'express';
-import * as Config from '../_config/config.json';
+import Config from '../_config/config.json';
 import { BeaconRouter } from './routes/beacon.routes';
 import { TimeRoutes } from './routes/time.routes';
 import { SecLevel } from './routes/security.routes';

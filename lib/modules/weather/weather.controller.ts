@@ -1,6 +1,6 @@
 import { WeatherData } from '../../bin/models/weather';
-import * as Config from '../../../_config/config.json';
-import * as request from "request";
+import Config from '../../../_config/config.json';
+import request from "request";
 import { Server } from '../../bin/server';
 const CronJob = require('cron').CronJob;
 

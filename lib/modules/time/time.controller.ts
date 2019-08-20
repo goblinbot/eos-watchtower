@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import { IcDate } from '../../bin/models/time';
 import { Server } from '../../bin/server';
 const CronJob = require('cron').CronJob;

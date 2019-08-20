@@ -1,5 +1,5 @@
-import * as emojistrip from 'emoji-strip';
-import * as stripTags from 'striptags';
+import emojistrip from 'emoji-strip';
+import stripTags from 'striptags';
 
 export class FilterService {
 

@@ -1,6 +1,6 @@
-import * as SecData from '../../bin/data/security.json';
+import SecData from '../../bin/data/security.json';
 // import { SecurityModel } from '../../bin/models/securitylevels';
-import * as Config from '../../../_config/config.json';
+import Config from '../../../_config/config.json';
 import { Server } from '../../bin/server';
 
 export class SecurityController {
