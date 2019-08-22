@@ -28,9 +28,11 @@ export class Server {
 
 
         // mongoose.Promise = global.Promise;
-        mongoose.connect(config.db, { useNewUrlParser: true }).then(
+        mongoose.connect(config.db, { useNewUrlParser: true }, (err) => {
+            if (err) { console.log('[&MONG] Can not connect to the database' + err) }
+        }).then(
             () => { console.log('[&MONG] Database is connected') },
-            err => { console.log('[&MONG] Can not connect to the database' + err) }
+            (err) => { console.log('[&MONG] Can not connect to the database' + err) }
         );
 
         Server.server = http.createServer(Server.application);
