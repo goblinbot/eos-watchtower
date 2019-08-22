@@ -26,7 +26,6 @@ export class Server {
         Server.application = app.application;
         Server.application.set('port', PORT);
 
-
         // mongoose.Promise = global.Promise;
         mongoose.connect(config.db, { useNewUrlParser: true }, (err) => {
             if (err) { console.log('[&MONG] Can not connect to the database' + err) }
