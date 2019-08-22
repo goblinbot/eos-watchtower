@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose = require('mongoose');
 
 export interface IMission extends mongoose.Document {
     _id: number;
