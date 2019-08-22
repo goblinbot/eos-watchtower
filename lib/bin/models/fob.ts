@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose = require('mongoose');
 
 export interface IFob extends mongoose.Document {
     _id: string;

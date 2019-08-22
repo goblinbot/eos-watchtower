@@ -1,9 +1,9 @@
 import { App } from "../app";
-import SocketIO from 'socket.io';
-import http from 'http';
-import https from 'https';
+import SocketIO = require('socket.io');
+import http = require('http');
+import https = require('https');
 import { Express } from 'express';
-import mongoose from 'mongoose';
+import mongoose = require('mongoose');
 import { readFileSync } from 'fs';
 const config = require('../../_config/config.json');
 

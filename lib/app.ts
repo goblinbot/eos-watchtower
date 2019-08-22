@@ -1,8 +1,8 @@
 import { Express } from 'express';
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import SocketIO from 'socket.io';
+import express = require('express');
+import cors = require('cors');
+import bodyParser = require('body-parser');
+import SocketIO = require('socket.io');
 import { Routes } from './routes';
 const config = require('../_config/config.json');
 
@@ -59,7 +59,7 @@ export class App {
     private setCrossOriginResourceSharing(): void {
         App.app.disable('x-powered-by');
         App.app.use((req, res, next) => {
-            res.setHeader("Access-Control-Allow-Origin", '*');
+            res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
             res.setHeader('Access-Control-Allow-Headers', 'Content-Type, withCredentials');
