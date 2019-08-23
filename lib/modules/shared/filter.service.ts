@@ -1,5 +1,5 @@
-import emojistrip from 'emoji-strip';
-import stripTags from 'striptags';
+import emojistrip = require('emoji-strip');
+import stripTags = require('striptags');
 
 export class FilterService {
 
