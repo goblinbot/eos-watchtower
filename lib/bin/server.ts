@@ -26,19 +26,22 @@ export class Server {
         Server.application = app.application;
         Server.application.set('port', PORT);
 
-
         // mongoose.Promise = global.Promise;
         mongoose.connect(config.db, { useNewUrlParser: true }, (err) => {
-            if (err) { console.log('[&MONG] Can not connect to the database' + err) }
+            if (err) {
+                console.log('[&MONG] Can not connect to the database' + err);
+            } else {
+                console.log('[&MONG] Database is connected');
+            }
         }).then(
-            () => { console.log('[&MONG] Database is connected') },
-            (err) => { console.log('[&MONG] Can not connect to the database' + err) }
+            () => { console.log('[&MONG] Initialised') },
+            (err) => { console.log('[&MONG] Can not initialise' + err) }
         );
 
         Server.server = http.createServer(Server.application);
         Server.websockets = SocketIO(Server.server);
 
-        Server.server.listen(PORT);
+        Server.server.listen(process.env.PORT || PORT);
         Server.websockets.on('connection', (socket) => {
             // console.log('[.IO] Socket connection established.');
         });

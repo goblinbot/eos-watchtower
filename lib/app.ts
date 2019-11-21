@@ -57,13 +57,13 @@ export class App {
     }
 
     private setCrossOriginResourceSharing(): void {
-        App.app.disable('x-powered-by');
         App.app.use((req, res, next) => {
-            const origin = req.headers.origin || '*';
-            res.setHeader("Access-Control-Allow-Origin", origin);
-            res.setHeader('Access-Control-Allow-Credentials', 'true');
-            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-            res.setHeader('Access-Control-Allow-Headers', 'Content-Type, withCredentials');
+            // res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+            // res.setHeader('Access-Control-Allow-Credentials', 'true');
+            // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+            // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             next();
         });
     }

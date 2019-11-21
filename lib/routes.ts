@@ -1,4 +1,5 @@
 import { Express, Request, Response } from 'express';
+import express = require('express');
 import { BeaconRouter } from './routes/beacon.routes';
 import { TimeRoutes } from './routes/time.routes';
 import { SecLevel } from './routes/security.routes';
@@ -21,9 +22,12 @@ export class Routes {
     private static getRoutes(app: Express): Express {
 
         // Start with the default 'landing'.
+        app.use(express.static('public'));
+
         app.route('/').get((req: Request, res: Response) => {
-            res.redirect('/api/');
+            res.sendFile('index.html', { "root": __dirname + '/public/' });
         });
+
         app.route('/api/').get((req: Request, res: Response) => {
             res.status(200).send({ message: `Welcome to the ${config.name} API.` });
         });

@@ -1,5 +1,5 @@
 import { WeatherData } from '../../bin/models/weather';
-import request from "request";
+import request = require('request');
 import { Server } from '../../bin/server';
 const CronJob = require('cron').CronJob;
 const config = require('../../../_config/config.json');
