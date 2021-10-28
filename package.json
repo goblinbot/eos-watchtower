@@ -48,7 +48,7 @@
     "express-async-router": "^0.1.15",
     "moment": "^2.24.0",
     "mongoose": "^5.4.15",
-    "nodemon": "^1.19.1",
+    "nodemon": "^2.0.14",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "socket.io": "^2.2.0",
