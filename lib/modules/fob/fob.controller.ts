@@ -19,25 +19,22 @@ export class FobController {
         }
     }
 
-    public getAllFobsFromDB = async (req, res) => {
-        Fob.find((err: any, fobs: any) => {
+    public getAllFobsFromDB = async (_req, res) => {
+        Fob.find((_err: any, _fobs: any) => {
             // return fobs;
         }).then((fobs: any) => {
             res.json(fobs);
-        }).catch((err) => {
+        }).catch((_err) => {
             res.status(400);
             res.json([]);
         });
     }
 
-    public updateFob(fob: any): any {
+    public async updateFob(fob: any): Promise<void> {
 
-        Fob.updateOne({ _id: fob._id }, fob, (err, obj) => {
+        await Fob.updateOne({ _id: fob._id }, () => {
             FobController.emitOnFobChanges();
-        }).then(res => {
-            // console.log(res);
         });
-
     }
 
     public fillDbWithMockFobs(): void {
