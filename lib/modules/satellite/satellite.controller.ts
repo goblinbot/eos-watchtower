@@ -1,12 +1,16 @@
 import APOD from '../../bin/models/SatelliteData/APOD';
 import request = require('request');
 import { Server } from '../../bin/server';
+import NeoWs from '../../bin/models/SatelliteData/NeoWs';
+import SatelliteData from '../../bin/models/SatelliteData/SatelliteData';
 const CronJob = require('cron').CronJob;
 const config = require('../../../_config/config.json');
 
 export class SatelliteController {
 
     public static apod: APOD;
+    public static neows: NeoWs;
+    public static satelliteData: SatelliteData
     private static options = {
         uri: config.APOD.api_url,
         json: true
