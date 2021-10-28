@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Eos LARP Rest API",
   "engines": {
-    "node": "10.15.3"
+    "node": "16.13.0"
   },
   "main": "index.js",
   "scripts": {

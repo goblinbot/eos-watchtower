@@ -1,4 +1,4 @@
-import { App } from "../app";
+import { App } from '../app';
 import SocketIO = require('socket.io');
 import http = require('http');
 import https = require('https');
@@ -7,14 +7,14 @@ import mongoose = require('mongoose');
 import { readFileSync } from 'fs';
 const config = require('../../_config/config.json');
 
-const PORT = (config.port ? config.port : 3000);
+const PORT = config.port ? config.port : 3000;
 let SSLOPTIONS;
 
 if (config.ssl.enabled) {
     SSLOPTIONS = {
         key: readFileSync(config.ssl.key_path),
-        cert: readFileSync(config.ssl.cert_path)
-    }
+        cert: readFileSync(config.ssl.cert_path),
+    };
 }
 
 export class Server {
@@ -27,16 +27,13 @@ export class Server {
         Server.application.set('port', PORT);
 
         // mongoose.Promise = global.Promise;
-        mongoose.connect(config.db, { useNewUrlParser: true }, (err) => {
-            if (err) {
-                console.log('[&MONG] Can not connect to the database' + err);
-            } else {
+        try {
+            mongoose.connect(config.db, { useNewUrlParser: true }, (err) => {
                 console.log('[&MONG] Database is connected');
-            }
-        }).then(
-            () => { console.log('[&MONG] Initialised') },
-            (err) => { console.log('[&MONG] Can not initialise' + err) }
-        );
+            });
+        } catch (error) {
+            console.log('[&MONG] Can not connect to the database' + error);
+        }
 
         Server.server = http.createServer(Server.application);
         Server.websockets = SocketIO(Server.server);
@@ -46,7 +43,6 @@ export class Server {
             // console.log('[.IO] Socket connection established.');
         });
         Server.server.on('listening', Server.onListening);
-
 
         if (config.ssl.enabled) {
             const httpsServer = https.createServer(SSLOPTIONS, Server.application);
@@ -65,7 +61,7 @@ export class Server {
         console.log('  .');
         console.log('  |>');
         console.log(' _|');
-        console.log('(\x1b[33m==\x1b[0m)')
+        console.log('(\x1b[33m==\x1b[0m)');
         console.log(' ## ');
         console.log(` ##   { ${config.name.toUpperCase()} }`);
         console.log(' ##');
@@ -74,5 +70,4 @@ export class Server {
         console.log(`Listening on port: \x1b[36m${PORT}\x1b[0m`);
         console.log('-------------------------');
     }
-
 }

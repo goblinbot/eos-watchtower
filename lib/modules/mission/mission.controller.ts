@@ -25,8 +25,8 @@ export class MissionController {
         });
     }
 
-    public updateMission(mission: any): void {
-        Mission.updateOne( { _id: mission._id }, mission, (err, obj) => {
+    public async updateMission(mission: any): Promise<void> {
+        await Mission.updateOne( { _id: mission._id }, () => {
             MissionController.emitOnMissionChanges();
         });
     }
