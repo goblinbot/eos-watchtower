@@ -4,7 +4,7 @@ import { Server } from '../../bin/server';
 import NeoWs from '../../bin/models/SatelliteData/NeoWs';
 import SatelliteData from '../../bin/models/SatelliteData/SatelliteData';
 const CronJob = require('cron').CronJob;
-const config = require('../../../_config/config.json');
+import config from '../../../_config/config.json';
 
 export class SatelliteController {
 
@@ -12,7 +12,7 @@ export class SatelliteController {
     public static neows: NeoWs;
     public static satelliteData: SatelliteData
     private static options = {
-        uri: config.APOD.api_url,
+        uri: config.apod.api_url,
         json: true
     };
 
@@ -21,9 +21,9 @@ export class SatelliteController {
      * - Starts a CronJob to repeat every 15 minutes, which updates A Picture Of the Day.
      */
     public static init(): void {
-        if (config.weather.api_url) {
-            console.log('\x1b[36m[*CRON] WeatherUpdate cron set to repeat every 15th minute.\x1b[0m');
-            this.updateWeatherRepeater.start();
+        if (config.apod.api_url) {
+            console.log('\x1b[36m[*CRON] apodUpdate cron set to repeat every 15th minute.\x1b[0m');
+            this.updateApodRepeater.start();
 
             if (!this.apod) {
                 this.getLiveApod();
@@ -47,7 +47,7 @@ export class SatelliteController {
             SatelliteController.onApodUpdate();
             return this.apod;
         } else {
-            console.error('ERR: liveweer[0] missing');
+            console.error('ERR: apod[0] missing');
             return;
         }
     }
@@ -62,15 +62,15 @@ export class SatelliteController {
     }
 
     /**
-     * @description Sets a CronJob to update the weather automatically every 15 minutes.
+     * @description Sets a CronJob to update the apod automatically every 15 minutes.
      */
-    private static updateWeatherRepeater = new CronJob('*/15 * * * *', function () {
-        console.log(`[*CRON] trigger: \x1b[32mupdateWeatherRepeater\x1b[0m, ${new Date()}`);
+    private static updateApodRepeater = new CronJob('*/15 * * * *', function () {
+        console.log(`[*CRON] trigger: \x1b[32updateApodRepeater\x1b[0m, ${new Date()}`);
         SatelliteController.getLiveApod();
     });
 
     /**
-     * @description tell everyone the weather updated, sends the new prediction after it as well.
+     * @description tell everyone the apod updated, sends the new prediction after it as well.
      */
     public static onApodUpdate(): void {
         Server.socketio().sockets.emit('apodUpdate', this.apod);
