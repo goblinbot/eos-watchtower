@@ -10,8 +10,8 @@ export class TimeController {
     public static init(): void {
         if (!this.ingameDate) {
             this.ingameDate = this.convertToIcDateObject({
-                ocEventStart: new Date(2021, 10, 22, 12), // at 12 o clock for timezone shenanigans.
-                icEventStart: new Date(2021, 5, 29, 12), // It's important that the current IC year is also the OC year.
+                ocEventStart: new Date(2021, 5, 20, 12), // at 12 o clock for timezone shenanigans.
+                icEventStart: new Date(2021, 6, 12, 12), // It's important that the current IC year is also the OC year.
                 icStartYear: 240,
                 icStartDayOfWeek: 5,
                 icYearAfter: 'NT'
