@@ -4,8 +4,7 @@ import { Server } from '../../bin/server';
 import NeoWs from '../../bin/models/SatelliteData/NeoWs';
 import SatelliteData from '../../bin/models/SatelliteData/SatelliteData';
 const CronJob = require('cron').CronJob;
-import config from '../../../_config/config.json';
-
+const config = require('../../../_config/config.json');
 export class SatelliteController {
 
     public static apod: APOD;
