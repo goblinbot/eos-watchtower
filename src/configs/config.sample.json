@@ -4,14 +4,6 @@
     "security": {
         "default": "green"
     },
-    "weather": {
-        "enabled": false,
-        "api_url": "http://weerlive.nl/api/json-data-10min.php?key=demo&locatie=Amsterdam"
-    },
-    "apod": {
-        "enabled": false,
-        "api_url":"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
-    },
     "ssl": {
         "enabled": false,
         "key_path": "./ssl/sample_privatekey.pem",

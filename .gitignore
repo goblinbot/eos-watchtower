@@ -9,5 +9,5 @@ package-lock.json
 */.DS_Store
 
 # custom
-/_config/config.json
+**/configs/config.json
 _dev_temp/
