@@ -10,5 +10,9 @@
         "cert_path": "./ssl/sample_certificate.pem",
         "port": 443
     },
-    "db": "mongodb://localhost:27017/sample"
+    "db": "mongodb://localhost:27017/sample",
+    "icDate": {
+        "yearPrefix": "",
+        "yearAffix": "NT"
+    }
 }
