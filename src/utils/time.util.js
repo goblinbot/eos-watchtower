@@ -1,4 +1,6 @@
 const dayjs = require('dayjs');
+const UTC = require('dayjs/plugin/utc');
+dayjs.extend(UTC);
 
 const DAY_NAMES = [
   'monday',
@@ -10,8 +12,12 @@ const DAY_NAMES = [
   'sunday',
 ];
 
+/**
+ * @param {Number} dayNumber (1 - 7)
+ * @returns string (monday - sunday)
+ */
 const getDayOfWeekName = (dayNumber) => {
-  const dayIndex = (dayNumber || dayjs().day()) - 1;
+  const dayIndex = (dayNumber || dayjs.utc().day()) - 1;
   return DAY_NAMES[dayIndex];
 };
 
