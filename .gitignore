@@ -7,7 +7,7 @@ package-lock.json
 *.iml
 .DS_Store
 */.DS_Store
+.env
 
 # custom
 **/configs/config.json
-_dev_temp/

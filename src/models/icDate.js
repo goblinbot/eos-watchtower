@@ -1,10 +1,9 @@
 const dayjs = require('dayjs');
 const UTC = require('dayjs/plugin/utc');
 const {icDate: DEFAULT_DATES} = require('../configs/config.json');
-const {getDayOfWeekName} = require('../utils/time.util');
+const {getDayOfWeekName} = require('../helpers/timeHelper');
 
 dayjs.extend(UTC);
-
 class IcDate {
   constructor(inputDate) {
     this.ocEventStart = inputDate?.ocEventStart;

@@ -1,12 +1,8 @@
 const { App } = require('./src/app');
 
-const { IcDate } = require('./src/models/icDate');
-const test = new IcDate({ iYear: 240 });
-console.log(test);
+// const { IcDate } = require('./src/models/icDate');
+// const test = new IcDate({ iYear: 240 });
+// console.log(test);
 
 
-const { app } = new App();
-
-// app.listen(5000, () => {
-//   console.log('FIRST MOCK RESULT: server on');
-// })
+// const PORT?: process.env.PORT -> Config.Port -> 5000 (default)
