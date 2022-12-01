@@ -11,7 +11,7 @@ export class TimeController {
         if (!this.ingameDate) {
             this.ingameDate = this.convertToIcDateObject({
                 ocEventStart: new Date(2022, 12, 2, 12), // at 12 o clock for timezone shenanigans.
-                icEventStart: new Date(2022, 6, 26, 12), // It's important that the current IC year is also the OC year.
+                icEventStart: new Date(2022, 5, 26, 12), // It's important that the current IC year is also the OC year.
                 icStartYear: 240,
                 icStartDayOfWeek: 5,
                 icYearAfter: 'NT'
