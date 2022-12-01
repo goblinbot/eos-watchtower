@@ -1,30 +1,25 @@
 {
   "name": "eos-watchtower",
-  "version": "1.0.2",
-  "description": "Eos LARP Rest API",
+  "version": "2.0.0",
+  "description": "Eos LARP REST API for non-character data",
   "main": "index.js",
   "scripts": {
     "test": "jarvis",
-    "postinstall": "npm run build-ts && node lib/setup.js",
-    "build-ts": "tsc",
-    "dev": "ts-node ./lib/index.ts",
-    "start": "npm run serve",
-    "serve": "node dist/index.js",
-    "watch-node": "nodemon dist/lib/index.js",
-    "watch-ts": "tsc -w",
-    "prod": "npm run build-ts && npm run start"
+    "dev": "nodemon index",
+    "start": "node index.js",
+    "setup": "node src/setup.js",
+    "postinstall": "npm run setup"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/goblinbot/eos-watchtower.git"
   },
   "keywords": [
-    "NodeJS",
     "rest",
     "API",
-    "typescript",
     "eos",
-    "larp"
+    "larp",
+    "node"
   ],
   "author": "Thijs Boerma",
   "license": "ISC",
@@ -32,26 +27,15 @@
     "url": "https://github.com/goblinbot/eos-watchtower/issues"
   },
   "homepage": "https://github.com/goblinbot/eos-watchtower#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
   "dependencies": {
-    "@types/express": "^4.17.1",
-    "@types/ip": "0.0.32",
-    "@types/mongoose": "^5.3.7",
-    "@types/socket.io": "^2.1.2",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.0",
     "cors": "^2.8.5",
-    "cron": "^1.7.1",
-    "emoji-strip": "^1.0.1",
-    "express": "^4.17.1",
-    "express-async-router": "^0.1.15",
-    "moment": "^2.24.0",
-    "mongoose": "^5.4.15",
-    "nodemon": "^2.0.14",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.7",
-    "socket.io": "^2.2.0",
-    "striptags": "^3.1.1",
-    "tslib": "^1.10.0",
-    "typegoose": "^5.9.0",
-    "typescript": "^3.5.3"
+    "cron": "^2.0.0",
+    "dayjs": "^1.11.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "port": 5000,
+  "name": "watchTower",
+  "security": {
+    "default": "green"
+  },
+  "ssl": {
+    "enabled": false,
+    "key_path": "./ssl/sample_privatekey.pem",
+    "cert_path": "./ssl/sample_certificate.pem",
+    "port": 443
+  },
+  "db": "mongodb://localhost:27017/sample",
+  "icDate": {
+    "yearPrefix": "",
+    "yearAffix": "NT",
+    "yearDefault": 240
+  }
+}
