@@ -23,7 +23,7 @@ App.use((req, res, next) => {
 });
 
 // Boot
-App.listen(3003, () => console.log('.][. Welcome to WatchTower .][.'));
+// App.listen(3003, () => console.log('.][. Welcome to WatchTower .][.'));
 
 module.exports = {
   App

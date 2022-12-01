@@ -1,4 +1,5 @@
 const timeRoutes = require('./timeRouter');
+const beaconRoutes = require('./beaconRouter');
 
 module.exports = (app) => {
   app.get('/', (req, res) =>
@@ -6,4 +7,5 @@ module.exports = (app) => {
   );
 
   app.use('/time', timeRoutes);
+  app.use('/beacon', beaconRoutes);
 };

@@ -1,3 +1,5 @@
+// TODO: replace with .env files (dotenv, configs/index.js)
+
 const fs = require('fs');
 
 const _initialSetup = () => {
