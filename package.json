@@ -41,7 +41,7 @@
     "cors": "^2.8.5",
     "cron": "^1.7.1",
     "emoji-strip": "^1.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-async-router": "^0.1.15",
     "moment": "^2.29.4",
     "mongoose": "^5.4.15",
