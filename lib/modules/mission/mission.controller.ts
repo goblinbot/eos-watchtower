@@ -1,12 +1,11 @@
 import Mission from "../../bin/models/mission";
 import { Server } from '../../bin/server';
 import { MOCKMISSIONS } from '../../bin/data/mockmissions';
+import { SOCKET_MISSION_UPDATE } from "../../shared/constants.sockets";
 
 export class MissionController {
 
-    public static init(): void {
-
-    }
+    public static init(): void { }
 
     public createMission(mission: any): void {
         MissionController.createMissionInDB(mission);
@@ -26,15 +25,26 @@ export class MissionController {
     }
 
     public async updateMission(mission: any): Promise<void> {
-        await Mission.updateOne( { _id: mission._id }, () => {
+        // await Mission.updateOne( { _id: mission._id }, () => {
+        //     MissionController.emitOnMissionChanges();
+        // });
+
+        const target = { _id: mission._id }
+        const changes = { ...mission }
+        delete changes._id
+
+        await Mission.findOneAndUpdate(target, changes, { 
+            returnOriginal: false,
+            useFindAndModify: false
+        }, () => {
             MissionController.emitOnMissionChanges();
         });
     }
 
     private static async emitOnMissionChanges(): Promise<void> {
-        console.log('SOCKETUPDATE MISS event');
+        console.log('SocketUpdate: Mission Board updated');
         if(Server.socketio()) {
-            Server.socketio().sockets.emit('MissionUpdate');
+            Server.socketio().sockets.emit(SOCKET_MISSION_UPDATE);
         }
     }
 

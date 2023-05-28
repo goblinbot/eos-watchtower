@@ -4,6 +4,11 @@
     "security": {
         "default": "green"
     },
+    "icDate": {
+        "yearPrefix": "",
+        "yearAffix": "NT",
+        "yearDefault": 240
+    },
     "weather": {
         "enabled": false,
         "api_url": "http://weerlive.nl/api/json-data-10min.php?key=demo&locatie=Amsterdam"

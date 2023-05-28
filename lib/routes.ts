@@ -11,11 +11,10 @@ const config = require('../_config/config.json');
 
 export class Routes {
 
-    constructor() {
-    }
+    constructor() { }
 
     public static initialize(app: Express): Express {
-        console.log('[RO] The routes are being initialized');
+        console.log('[RO] Setting up (API) routes');
         return Routes.getRoutes(app);
     }
 

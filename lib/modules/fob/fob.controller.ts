@@ -1,6 +1,7 @@
 import Fob from '../../bin/models/fob';
 import { Server } from '../../bin/server';
 import { MOCKFOBS } from '../../bin/data/mockfobs';
+import { SOCKET_FOB_UPDATE } from '../../shared/constants.sockets';
 
 export class FobController {
 
@@ -15,7 +16,7 @@ export class FobController {
 
     private static async emitOnFobChanges(): Promise<void> {
         if (Server.socketio()) {
-            Server.socketio().sockets.emit('fobUpdate');
+            Server.socketio().sockets.emit(SOCKET_FOB_UPDATE);
         }
     }
 
@@ -31,8 +32,14 @@ export class FobController {
     }
 
     public async updateFob(fob: any): Promise<void> {
+        const target = { _id: fob._id }
+        const changes = { ...fob }
+        delete changes._id
 
-        await Fob.updateOne({ _id: fob._id }, () => {
+        await Fob.findOneAndUpdate(target, changes, {
+            returnOriginal: false,
+            useFindAndModify: false
+        }, () => {
             FobController.emitOnFobChanges();
         });
     }
