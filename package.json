@@ -6,11 +6,12 @@
   "scripts": {
     "test": "jarvis",
     "postinstall": "npm run build-ts && node lib/setup.js",
+    "build": "tsc",
     "build-ts": "tsc",
-    "dev": "ts-node ./lib/index.ts",
+    "dev": "ts-node ./index.ts",
     "start": "npm run serve",
     "serve": "node dist/index.js",
-    "watch-node": "nodemon dist/lib/index.js",
+    "watch-node": "nodemon dist/index.js",
     "watch-ts": "tsc -w",
     "prod": "npm run build-ts && npm run start"
   },
@@ -33,11 +34,6 @@
   },
   "homepage": "https://github.com/goblinbot/eos-watchtower#readme",
   "dependencies": {
-    "@types/express": "^4.17.1",
-    "@types/ip": "0.0.32",
-    "@types/mongoose": "^5.3.7",
-    "@types/node": "^20.2.5",
-    "@types/socket.io": "^2.1.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "cron": "^1.7.1",
@@ -56,6 +52,9 @@
     "typescript": "^5.0.4"
   },
   "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/ip": "0.0.32",
+    "@types/node": "^20.2.5",
     "bufferutil": "^4.0.7",
     "ts-node": "^10.9.1",
     "utf-8-validate": "^5.0.10"
