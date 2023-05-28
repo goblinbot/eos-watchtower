@@ -6,12 +6,13 @@ const CronJob = require('cron').CronJob;
 export class TimeController {
 
     public static ingameDate: IcDate;
-
+    //ocEventStart fields: OC Year, OC Month, OC Day, leave 12 as-is.
+    //icEventStart fields: OC Year (Yes, OC), IC Month *minus 1* (so if IC Month is July, then put 6), IC Day, again leave 12 as-is.
     public static init(): void {
         if (!this.ingameDate) {
             this.ingameDate = this.convertToIcDateObject({
-                ocEventStart: new Date(2022, 5, 20, 12), // at 12 o clock for timezone shenanigans.
-                icEventStart: new Date(2022, 6, 12, 12), // It's important that the current IC year is also the OC year.
+                ocEventStart: new Date(2023, 6, 9, 12), // at 12 o clock for timezone shenanigans.
+                icEventStart: new Date(2023, 6, 17, 12), // It's important that the current IC year is also the OC year.
                 icStartYear: 240,
                 icStartDayOfWeek: 5,
                 icYearAfter: 'NT'
