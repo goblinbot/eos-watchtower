@@ -10,10 +10,22 @@ import { Server } from "../../bin/server";
 
 dayjs.extend(UTC);
 
-// TODO: dynamic dates
+
+// TODO: dynamic dates.
+
+// Hour placeholder: Force the time to 1200 to prevent timezone issues before dayjs/UTC can fix it.
+const _HOUR_PLACEHOLDER = 12
+
+/**
+ * HEADS UP: Dates in Javascript index their months starting at 0.
+ * This means if you want to set "1 january 2020" you'll need to enter:
+ *      new Date(2020, 0, 1)
+ * 
+ *  instead of the expected 2020, 1, 1.
+ */
 export const eventDateData = {
-    ocEventStartDate: new Date(2023, 5, 9, 12),
-    icEventStartDate: new Date(2023, 6, 17, 12),
+    ocEventStartDate: new Date(2023, 5, 9, _HOUR_PLACEHOLDER),
+    icEventStartDate: new Date(2023, 6, 17, _HOUR_PLACEHOLDER),
 }
 
 /**
