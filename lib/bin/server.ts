@@ -28,7 +28,7 @@ export class Server {
 
         // mongoose.Promise = global.Promise;
         try {
-            mongoose.connect(config.db, { useNewUrlParser: true }, (err) => {
+            mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
                 console.log('[&MONG] Database is connected');
             });
         } catch (error) {

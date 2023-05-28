@@ -1,6 +1,7 @@
 const secData = require('../../bin/data/security.json');
 // import { SecurityModel } from '../../bin/models/securitylevels';
 const config = require('../../../_config/config.json');
+import { SOCKET_SECLVL_UPDATE } from '../../shared/constants.sockets';
 import { Server } from '../../bin/server';
 
 export class SecurityController {
@@ -44,7 +45,7 @@ export class SecurityController {
     }
 
     private static onSecurityChange(): void {
-        Server.socketio().sockets.emit('securityUpdate', this.currentSecLevel);
+        Server.socketio().sockets.emit(SOCKET_SECLVL_UPDATE, this.currentSecLevel);
     }
 
 }

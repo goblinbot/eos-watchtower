@@ -1,6 +1,7 @@
 import Fob from '../../bin/models/fob';
 import { Server } from '../../bin/server';
 import { MOCKFOBS } from '../../bin/data/mockfobs';
+import { SOCKET_FOB_UPDATE } from '../../shared/constants.sockets';
 
 export class FobController {
 
@@ -15,7 +16,7 @@ export class FobController {
 
     private static async emitOnFobChanges(): Promise<void> {
         if (Server.socketio()) {
-            Server.socketio().sockets.emit('fobUpdate');
+            Server.socketio().sockets.emit(SOCKET_FOB_UPDATE);
         }
     }
 

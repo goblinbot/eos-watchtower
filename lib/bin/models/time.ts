@@ -1,20 +1,37 @@
+import dayjs from "dayjs";
+import UTC from "dayjs/plugin/utc";
+import { getDayOfWeekName, getLocalizedDayNumber } from "../../modules/time/time.helper";
+
+dayjs.extend(UTC);
+
+import CONFIG from "../../../_config/config.json"
+const DEFAULT_DATES = CONFIG.icDate
+
 /**
  * @description Total time object.
  */
 export class IcDate {
-    ocEventStart: Date;
-    icEventStart: Date;
-    iStartDayOfWeek: 1 | 2 | 3 | 4 | 5 | 6 | 7;
-    iStartYear: number;
+    iYear: number
+    iYearBefore?: string
+    iYearAfter?: string
+    iDay: number
+    iMonth: number
+    iDayOfWeek: number
+    iDayName: string
+    iMonthName: string
 
-    iYear: number;
-    iYearBefore: string; // title BEFORE the year. For example <Anno> 1776
-    iYearAfter: string; // title AFTER the year. For example  1776 <A.D.>
-
-
-    iDay: number;
-    iMonth: number;
-    iDayOfWeek: number;
-    iDayName: string;
-    iMonthName: string;
+    constructor(inputDate) {
+        // this.ocEventStart = inputDate?.ocEventStart;
+        // this.icEventStart = inputDate?.icEventStart;
+        // this.iStartYear = inputDate?.iStartYear;
+        this.iYear = inputDate?.iYear || DEFAULT_DATES.yearDefault;
+        this.iYearBefore = inputDate?.iYearBefore || DEFAULT_DATES.yearPrefix;
+        this.iYearAfter = inputDate?.iYearAfter || DEFAULT_DATES.yearAffix;
+        this.iDay = inputDate?.iDay;
+        this.iMonth = inputDate?.iMonth;
+        this.iDayOfWeek = inputDate?.iDayOfWeek || getLocalizedDayNumber();
+        this.iDayName = inputDate?.iDayName || getDayOfWeekName();
+        this.iMonthName = inputDate?.iMonthName;
+    }
 }
+
