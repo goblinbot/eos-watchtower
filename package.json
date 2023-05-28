@@ -41,11 +41,11 @@
     "cors": "^2.8.5",
     "cron": "^1.7.1",
     "emoji-strip": "^1.0.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-async-router": "^0.1.15",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "mongoose": "^5.4.15",
-    "nodemon": "^2.0.14",
+    "nodemon": "^2.0.20",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "socket.io": "^2.2.0",
@@ -55,6 +55,8 @@
     "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "bufferutil": "^4.0.7",
+    "utf-8-validate": "^5.0.10"
   }
 }
