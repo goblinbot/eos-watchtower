@@ -31,8 +31,14 @@ export class FobController {
     }
 
     public async updateFob(fob: any): Promise<void> {
+        const target = { _id: fob._id }
+        const changes = { ...fob }
+        delete changes._id
 
-        await Fob.updateOne({ _id: fob._id }, () => {
+        await Fob.findOneAndUpdate(target, changes, {
+            returnOriginal: false,
+            useFindAndModify: false
+        }, () => {
             FobController.emitOnFobChanges();
         });
     }

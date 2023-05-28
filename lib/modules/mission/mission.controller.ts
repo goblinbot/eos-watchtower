@@ -26,7 +26,18 @@ export class MissionController {
     }
 
     public async updateMission(mission: any): Promise<void> {
-        await Mission.updateOne( { _id: mission._id }, () => {
+        // await Mission.updateOne( { _id: mission._id }, () => {
+        //     MissionController.emitOnMissionChanges();
+        // });
+
+        const target = { _id: mission._id }
+        const changes = { ...mission }
+        delete changes._id
+
+        await Mission.findOneAndUpdate(target, changes, { 
+            returnOriginal: false,
+            useFindAndModify: false
+        }, () => {
             MissionController.emitOnMissionChanges();
         });
     }
